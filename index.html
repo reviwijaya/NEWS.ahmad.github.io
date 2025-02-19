@@ -1,4 +1,41 @@
-</h2>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neonatal Early Warning Score (NEWS)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        label, select, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        select, button {
+            width: 100%;
+            padding: 8px;
+        }
+        h2, h3 {
+            text-align: center;
+        }
+        #riskFactors {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Neonatal Early Warning Score (NEWS)</h2>
     <form id="newsForm">
         <label for="respiratoryRate">Frekuensi Pernapasan (per menit):</label>
         <select id="respiratoryRate">
@@ -101,11 +138,7 @@
         function toggleRiskFactors() {
             var riskFactor = document.getElementById("riskFactor").value;
             var riskFactorsDiv = document.getElementById("riskFactors");
-            if (riskFactor === "yes") {
-                riskFactorsDiv.style.display = "block";
-            } else {
-                riskFactorsDiv.style.display = "none";
-            }
+            riskFactorsDiv.style.display = (riskFactor === "yes") ? "block" : "none";
         }
     </script>
 </body>
