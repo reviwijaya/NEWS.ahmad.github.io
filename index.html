@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neonatal Early Warning Score (NEWS)</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
+        label, select, input { display: block; margin: 10px 0; }
+        button { padding: 10px; background: blue; color: white; border: none; cursor: pointer; }
+        button:hover { background: darkblue; }
+    </style>
+</head>
+<body>
+    <h2>Neonatal Early Warning Score (NEWS)</h2>
+    <form id="newsForm">
+        <label>Frekuensi Pernapasan (per menit):
+            <select id="respiratoryRate">
+                <option value="1">20-39</option>
+                <option value="0">40-60</option>
+                <option value="1">61-70</option>
+                <option value="2">71-89</option>
+            </select>
+        </label>
+        
+        <label>Usaha Napas:
+            <select id="breathingEffort">
+                <option value="0">Normal</option>
+                <option value="1">Napas Cuping Hidung</option>
+                <option value="2">Suara Tambahan/Retraksi/Suara grok-grok</option>
+            </select>
+        </label>
+        
+        <button type="button" onclick="calculateNEWS()">Hitung Skor</button>
+    </form>
+    
+    <h3>Hasil:</h3>
+    <p id="result"></p>
+    
+    <script>
+        function calculateNEWS() {
+            let score = 0;
+            score += parseInt(document.getElementById('respiratoryRate').value);
+            score += parseInt(document.getElementById('breathingEffort').value);
+            
+            let interpretation = "";
+            if (score == 1) {
+                interpretation = "Ulang pemeriksaan 1 jam berikutnya. Jika tidak berubah, diskusikan dengan dokter anak.";
+            } else if (score == 2) {
+                interpretation = "Perlu pemeriksaan oleh dokter anak dalam 30 menit.";
+            } else if (score >= 3) {
+                interpretation = "Perlu pemeriksaan segera oleh dokter anak.";
+            } else {
+                interpretation = "Pasien dalam kondisi normal.";
+            }
+            
+            document.getElementById('result').innerText = "Total Skor: " + score + "\n" + interpretation;
+        }
+    </script>
+</body>
+</html>
